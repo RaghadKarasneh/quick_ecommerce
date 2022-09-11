@@ -89,7 +89,6 @@ const Navbar = () => {
           </MenuItem>
         </Right>
       </Wrapper>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi maxime facilis odio dignissimos pariatur dolore praesentium error incidunt nostrum, voluptates rerum asperiores eum. Fugiat suscipit aliquid atque quam! Libero, exercitationem.</p>
     </Container>
   );
 };

@@ -88,11 +88,9 @@ const Footer = () => {
   return (
     <Container>
       <Left>
-        <Logo>LAMA.</Logo>
+        <Logo>QUICK E-COMMERCE</Logo>
         <Desc>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don’t look even slightly believable.
+         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo, odio eius quaerat omnis voluptatum architecto aperiam aspernatur vitae vel, suscipit, deleniti itaque repellendus. Natus at quas blanditiis est voluptas animi?
         </Desc>
         <SocialContainer>
           <SocialIcon color="3B5999">
