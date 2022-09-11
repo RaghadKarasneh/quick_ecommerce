@@ -2,7 +2,10 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
+import { Routes, BrowserRouter, Route, Link } from 'react-router-dom';
 import { mobile } from "../responsive";
+import Register from '../pages/Register';
+import Login from '../pages/Login';
 
 const Container = styled.div`
 height: 70px;
@@ -63,10 +66,11 @@ const Right = styled.div`
   ${mobile({ flex: 2, justifyContent: "center" })}
 `;
 
-const MenuItem = styled.div`
+const MenuItem = styled.a`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  color:#fff;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
@@ -77,16 +81,26 @@ const Navbar = () => {
         <Left>
         </Left>
         <Center>
-          <Logo>QUICK E-COMMERCE</Logo>
+          <Logo>
+            <Link to="/">QUICK E-COMMERCE</Link>
+          </Logo>
         </Center>
         <Right>
-          <MenuItem>SIGN UP</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
           <MenuItem>
+            {/*  */}
+        
+                <Link to ='/Register'>SIGN UP</Link>
+                <Link to ='/Login'> SIGN IN</Link>
+
+           
+            {/*  */}
+          </MenuItem>
+
+          {/* <MenuItem>
             <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlined />
             </Badge>
-          </MenuItem>
+          </MenuItem> */}
         </Right>
       </Wrapper>
     </Container>

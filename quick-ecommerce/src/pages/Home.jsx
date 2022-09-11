@@ -6,9 +6,9 @@ import Products from "../components/Products";
 const Home = () => {
   return (
     <div>
-      <Navbar />
+     
       <Products/>
-      <Footer/>
+ 
     </div>
   );
 };
