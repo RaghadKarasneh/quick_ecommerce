@@ -9,10 +9,7 @@ const Container = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
 `;
-const sectionTitle = styled.h2`
-    width: 100%;
-    text-align: center;
-`;
+
 
 const Products = () => {
   const [products,bringProducts]=useState([]);
@@ -26,7 +23,7 @@ const Products = () => {
    })
   return (
     <Container>
-      <sectionTitle>OUR PRODUCTS</sectionTitle>
+      <p style={{textAlign:'center', width: '100%',display: 'block', fontSize:'40px' }}>OUR PRODUCTS</p>
       {products.map((item) => (
         <Product item={item} key={item.id} />
       ))}

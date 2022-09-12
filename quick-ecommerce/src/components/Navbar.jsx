@@ -73,7 +73,10 @@ const MenuItem = styled.a`
   color:#fff;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
-
+const x=sessionStorage.getItem("user_info");
+const logout=()=>{
+  sessionStorage.removeItem('user_info');
+}
 const Navbar = () => {
   return (
     <Container>
@@ -88,9 +91,10 @@ const Navbar = () => {
         <Right>
           <MenuItem>
             {/*  */}
-                <Link to="/Profile"><Person /></Link>
-                <Link to ='/Register'>SIGN UP</Link>
-                <Link to ='/Login'> SIGN IN</Link>
+                <Link to="/Profile" style={{ display:x?"block":"none"}}><Person /></Link>
+                <button type="submit" style={{ display:x?"block":"none"}} onClick={logout}>Logout</button>
+                <Link to ='/Register' style={{ display:x?"none":"block"}}>SIGN UP</Link>
+                <Link to ='/Login' style={{ display:x?"none":"block"}}> SIGN IN</Link>
 
            
             {/*  */}

@@ -1,4 +1,4 @@
-import Product from "./pages/Product";
+import Product from "./pages/SingleProduct";
 import Home from "./pages/Home";
 import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
@@ -9,6 +9,7 @@ import { Routes, BrowserRouter, Route, Link } from 'react-router-dom';
 import Profile from "./pages/Profile";
 import AddProduct from "./pages/AddProduct";
 import EditProducts from "./pages/EditProducts";
+import SingleProduct from "./pages/SingleProduct";
 const App = () => {
   return (
     <>
@@ -22,7 +23,7 @@ const App = () => {
           <Route path='/Profile' element={< Profile />} />
           <Route path='/Add-Product' element={< AddProduct />} />
           <Route path='/EditProducts/:id/edit' element={< EditProducts />} />
-     
+          <Route path='/SingleProduct/:id/' element={< SingleProduct />} />
         </Routes>
         <Footer />
       </BrowserRouter>

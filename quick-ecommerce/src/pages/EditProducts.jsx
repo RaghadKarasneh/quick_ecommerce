@@ -73,7 +73,7 @@ function EditProducts() {
 
 
                                 <span className="des">Product Image <span className="required" >*</span></span>
-                                <input type="productImage" name="image" required onChange={productImageHandel} defaultValue={image} />
+                                <input type="file" name="image" required onChange={productImageHandel} defaultValue={image} />
 
                                 <span>Product Price <span className="required">*</span></span>
                                 <input type="number" id="img" name="price" className='img' required onChange={productPriceHandel} defaultValue={price} />

@@ -1,7 +1,6 @@
+import { Link } from "@material-ui/core";
 import {
-  FavoriteBorderOutlined,
-  SearchOutlined,
-  ShoppingCartOutlined,
+  SearchOutlined
 } from "@material-ui/icons";
 import styled from "styled-components";
 
@@ -70,17 +69,24 @@ const Product = ({ item }) => {
   return (
     <Container>
       <Circle />
+
       <Image src={`../../img/${item.image}`} />
       <Info>
         <Icon>
-          <ShoppingCartOutlined />
+          <SearchOutlined
+            onClick={(e) => {
+              e.preventDefault();
+              sessionStorage.setItem('Id', item.id);
+              sessionStorage.setItem('product_name', item.product_name);
+              sessionStorage.setItem('image', item.image);
+              sessionStorage.setItem('description', item.description);
+              sessionStorage.setItem('price', item.price);
+              window.location = `/SingleProduct/${item.id}/`
+            }}>
+
+          </SearchOutlined>
         </Icon>
-        <Icon>
-          <SearchOutlined />
-        </Icon>
-        <Icon>
-          <FavoriteBorderOutlined />
-        </Icon>
+
       </Info>
     </Container>
   );

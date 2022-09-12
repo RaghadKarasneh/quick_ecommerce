@@ -26,31 +26,17 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 40%;
+  width: 70%;
   padding: 20px;
   background-color: white;
   ${mobile({ width: "75%" })}
 `;
 
-const Name = styled.h1`
-  font-size: 24px;
-  font-weight: 300;
-`;
+
 const Title = styled.h3`
   font-size: 24px;
   font-weight: 300;
   margin-top: 50px;
-`;
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Input = styled.input`
-  flex: 1;
-  min-width: 40%;
-  margin: 10px 0;
-  padding: 10px;
 `;
 
 const Button = styled.button`
@@ -63,44 +49,35 @@ const Button = styled.button`
   margin-bottom: 20px;
   float:right;
 `;
-const Image = styled.img`
-  height: 75%;
-  z-index: 2;
-  border-radius:50%;
-  text-align: center
-`;
 const Text = styled.p`
   font-size:15px
 `;
 const Profile = () => {
     const [userItems, bringUserItems] = useState([]);
-    const [deleteItems, deleteUserItems] = useState([]);
     useEffect(() => {
         axios.get(`http://localhost/Quick_Ecommerce/quick_ecommerce/quick-ecommerce/API/bringUserProducts.php/?user_id=1`)
             .then((res) => {
-          
+
                 const items = res.data;
                 bringUserItems(items);
-             
+
             });
     });
-    
-    const deleteProduct=(Id)=>{
-        axios.delete(`http://localhost/Quick_Ecommerce/quick_ecommerce/quick-ecommerce/API/deleteProduct.php?id=`+Id)
-        .then(function(res){
-          console.log(res.data);
-          const info = res.data;
-       
-        })
-      }
+
+    const deleteProduct = (Id) => {
+        axios.delete(`http://localhost/Quick_Ecommerce/quick_ecommerce/quick-ecommerce/API/deleteProduct.php?id=` + Id)
+            .then(function (res) {
+                console.log(res.data);
+                const info = res.data;
+
+            })
+    }
     return (
         <Container>
             <Wrapper>
-                <Image src="https://randomuser.me/api/portraits/men/64.jpg" />
-                <Name>Raghad</Name>
                 <Title>Your Products</Title>
-                <Button variant="success"> 
-                <Link to="/Add-Product"><Add /></Link> </Button>
+                <Button variant="success" >
+                    <Link to="/Add-Product"><Add style={{color: '#fff'}}/></Link> </Button>
                 <Table striped bordered hover style={{ width: '100%', textAlign: 'center' }}>
                     <thead>
                         <tr>
@@ -121,20 +98,22 @@ const Profile = () => {
                                 <td>{item.description}</td>
                                 <td>{item.price}</td>
                                 <td>
-                                <button className="btn ml-5" style={{background:'#b88b68ec', }} onClick={(e)=>{e.preventDefault();
-                                        sessionStorage.setItem('Id',item.id);
-                                        sessionStorage.setItem('product_name',item.product_name);
-                                        sessionStorage.setItem('img',item.image);
-                                        sessionStorage.setItem('description',item.description);
-                                        sessionStorage.setItem('price',item.price);
-                                        
-                                        window.location=`/EditProducts/${item.id}/edit`}}><Edit style={{ color: 'blue' }} /></button>
-                                    
-                                    <Delete style={{ color: 'red' }} onClick={()=>deleteProduct(item.id)}/>
+                                    <button className="btn ml-5" style={{ backgroundColor: 'transparent', }} onClick={(e) => {
+                                        e.preventDefault();
+                                        sessionStorage.setItem('Id', item.id);
+                                        sessionStorage.setItem('product_name', item.product_name);
+                                        sessionStorage.setItem('img', item.image);
+                                        sessionStorage.setItem('description', item.description);
+                                        sessionStorage.setItem('price', item.price);
+
+                                        window.location = `/EditProducts/${item.id}/edit`
+                                    }}><Edit style={{ color: 'blue' }} /></button>
+
+                                    <Delete style={{ color: 'red', cursor: 'pointer' }} onClick={() => deleteProduct(item.id)} />
 
                                 </td>
                             </tr>
-                    ))};
+                        ))};
 
 
                     </tbody>
