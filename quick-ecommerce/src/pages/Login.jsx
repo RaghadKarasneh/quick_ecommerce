@@ -10,8 +10,12 @@ function Login() {
     const error = useSelector(state => state.login.error);
 
     if (user !== '') {
-      console.log(user,'RAGHAD');
-        sessionStorage.setItem("user_info", user);
+      // console.log(user,'RAGHAD');
+      // const x=user;
+      //  console.log(x,'x');
+        sessionStorage.setItem("user_info", JSON.stringify(user[0].id));
+        const y=sessionStorage.getItem("user_info");
+        console.log(sessionStorage.getItem("user_info"),'RAGHAD');
         // if (path){
             window.location.href = "/"
         // }else{

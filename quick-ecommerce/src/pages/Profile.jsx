@@ -74,22 +74,33 @@ const Text = styled.p`
 `;
 const Profile = () => {
     const [userItems, bringUserItems] = useState([]);
+    const [deleteItems, deleteUserItems] = useState([]);
     useEffect(() => {
         axios.get(`http://localhost/Quick_Ecommerce/quick_ecommerce/quick-ecommerce/API/bringUserProducts.php/?user_id=1`)
             .then((res) => {
-                console.log(res.data);
+          
                 const items = res.data;
                 bringUserItems(items);
-                console.log( userItems);
+             
             });
     });
+    
+    const deleteProduct=(Id)=>{
+        axios.delete(`http://localhost/Quick_Ecommerce/quick_ecommerce/quick-ecommerce/API/deleteProduct.php?id=`+Id)
+        .then(function(res){
+          console.log(res.data);
+          const info = res.data;
+       
+        })
+      }
     return (
         <Container>
             <Wrapper>
                 <Image src="https://randomuser.me/api/portraits/men/64.jpg" />
                 <Name>Raghad</Name>
                 <Title>Your Products</Title>
-                <Button variant="success"> <Add /></Button>
+                <Button variant="success"> 
+                <Link to="/Add-Product"><Add /></Link> </Button>
                 <Table striped bordered hover style={{ width: '100%', textAlign: 'center' }}>
                     <thead>
                         <tr>
@@ -103,8 +114,8 @@ const Profile = () => {
                     </thead>
                     <tbody>
                         {userItems.map((item) => (
-                            <tr>
-                                <td>{item.id}</td>
+                            <tr key={item.id}>
+                                <td >{item.id}</td>
                                 <td>{item.product_name}</td>
                                 <td>{item.image}</td>
                                 <td>{item.description}</td>
@@ -112,7 +123,7 @@ const Profile = () => {
                                 <td>
 
                                     <Edit style={{ color: 'blue' }} />
-                                    <Delete style={{ color: 'red' }} />
+                                    <Delete style={{ color: 'red' }} onClick={()=>deleteProduct(item.id)}/>
 
                                 </td>
                             </tr>
