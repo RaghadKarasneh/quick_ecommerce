@@ -84,8 +84,8 @@ const Profile = () => {
                 <Image src="https://randomuser.me/api/portraits/men/64.jpg" />
                 <Name>Raghad</Name>
                 <Title>Your Products</Title>
-                <Button variant="success"> <Add /></Button>{' '}
-                <Table striped bordered hover style={{ width: '100%' }}>
+                <Button variant="success"> <Add /></Button>
+                <Table striped bordered hover style={{ width: '100%', textAlign:'center' }}>
                     <thead>
                         <tr>
                             <th>Product ID</th>
