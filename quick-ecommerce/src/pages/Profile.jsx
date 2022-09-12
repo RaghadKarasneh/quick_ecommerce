@@ -121,8 +121,15 @@ const Profile = () => {
                                 <td>{item.description}</td>
                                 <td>{item.price}</td>
                                 <td>
-
-                                    <Edit style={{ color: 'blue' }} />
+                                <button className="btn ml-5" style={{background:'#b88b68ec', }} onClick={(e)=>{e.preventDefault();
+                                        sessionStorage.setItem('Id',item.id);
+                                        sessionStorage.setItem('product_name',item.product_name);
+                                        sessionStorage.setItem('img',item.image);
+                                        sessionStorage.setItem('description',item.description);
+                                        sessionStorage.setItem('price',item.price);
+                                        
+                                        window.location=`/EditProducts/${item.id}/edit`}}><Edit style={{ color: 'blue' }} /></button>
+                                    
                                     <Delete style={{ color: 'red' }} onClick={()=>deleteProduct(item.id)}/>
 
                                 </td>
