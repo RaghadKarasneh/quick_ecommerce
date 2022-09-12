@@ -6,21 +6,22 @@ import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Routes, BrowserRouter, Route, Link } from 'react-router-dom';
+import Profile from "./pages/Profile";
 const App = () => {
   return (
-  <>
-  
-  <BrowserRouter>
-<Navbar/>
-              <Routes>
-              <Route exact path='/' element={< Home />}/>
-                <Route path='/Register' element={< Register />}/>
-                <Route path='/Login' element={< Login />}/>
+    <>
 
-              </Routes>
-<Footer/>
-            </BrowserRouter>
- </>)
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route exact path='/' element={< Home />} />
+          <Route path='/Register' element={< Register />} />
+          <Route path='/Login' element={< Login />} />
+          <Route path='/Profile' element={< Profile />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </>)
 };
 
 export default App;
