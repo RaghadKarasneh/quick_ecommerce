@@ -1,5 +1,5 @@
 
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from 'axios';
 import { mobile } from "../responsive";
@@ -9,12 +9,7 @@ import { Add, Delete, Edit } from "@material-ui/icons";
 import { Link } from 'react-router-dom';
 // import "./reg.css";
 
-const regExp = RegExp(
-    /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/
-)
-const passRegex = RegExp(
-    /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
-)
+
 const Container = styled.div`
   width: 99vw;
   height: 100vh;
@@ -78,6 +73,16 @@ const Text = styled.p`
   font-size:15px
 `;
 const Profile = () => {
+    const [userItems, bringUserItems] = useState([]);
+    useEffect(() => {
+        axios.get(`http://localhost/Quick_Ecommerce/quick_ecommerce/quick-ecommerce/API/bringUserProducts.php/?user_id=1`)
+            .then((res) => {
+                console.log(res.data);
+                const items = res.data;
+                bringUserItems(items);
+                console.log( userItems);
+            });
+    });
     return (
         <Container>
             <Wrapper>
@@ -85,7 +90,7 @@ const Profile = () => {
                 <Name>Raghad</Name>
                 <Title>Your Products</Title>
                 <Button variant="success"> <Add /></Button>
-                <Table striped bordered hover style={{ width: '100%', textAlign:'center' }}>
+                <Table striped bordered hover style={{ width: '100%', textAlign: 'center' }}>
                     <thead>
                         <tr>
                             <th>Product ID</th>
@@ -97,19 +102,22 @@ const Profile = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>
+                        {userItems.map((item) => (
+                            <tr>
+                                <td>{item.id}</td>
+                                <td>{item.product_name}</td>
+                                <td>{item.image}</td>
+                                <td>{item.description}</td>
+                                <td>{item.price}</td>
+                                <td>
 
-                                <Edit style={{ color: 'blue' }}/>
-                                <Delete style={{ color: 'red' }}/>
+                                    <Edit style={{ color: 'blue' }} />
+                                    <Delete style={{ color: 'red' }} />
 
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                    ))};
+
 
                     </tbody>
 

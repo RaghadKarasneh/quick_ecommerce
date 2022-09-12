@@ -1,5 +1,5 @@
 import { Badge } from "@material-ui/core";
-import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import { Search, ShoppingCartOutlined, Person } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import { Routes, BrowserRouter, Route, Link } from 'react-router-dom';
@@ -88,7 +88,7 @@ const Navbar = () => {
         <Right>
           <MenuItem>
             {/*  */}
-        
+                <Link to="/Profile"><Person /></Link>
                 <Link to ='/Register'>SIGN UP</Link>
                 <Link to ='/Login'> SIGN IN</Link>
 

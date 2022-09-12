@@ -1,19 +1,20 @@
 <?php
-include_once "./connection.php";
 
-$sql="SELECT * from user";
+include "connection.php";
 
-$result=mysqli_query($con,$sql);
 
-if(!$result){
-    http_response_code(404);
-    die(mysqli_error($con));
-}
-echo "[";
-
-for($i=0;$i<mysqli_num_rows($result);$i++){
-  echo($i>0?',':'').json_encode(mysqli_fetch_object($result));
-}
-echo "]";
-
-?>
+    $email    =  $_REQUEST['email'];
+    $password = md5($_REQUEST['password']);
+    $sql = "select * from users where email='$email' and password= '$password'";
+    $result = mysqli_query($con, $sql);
+    $arr =  array();
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $arr[] = $row;
+        }}
+        else{
+            return NULL;
+        }
+     
+    print_r(json_encode($arr));
+     ?>

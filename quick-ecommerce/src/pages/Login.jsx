@@ -1,176 +1,132 @@
-import React, { Component } from "react";
-import axios from 'axios';
-import styled from "styled-components";
-import {mobile} from "../responsive";
-import {  Link } from 'react-router-dom';
-const regExp = RegExp(
-  /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/
-)
+import React from 'react';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { login } from "../action/login";
 
-const formValid = ({ isError, ...rest }) => {
-  let isValid = false;
+function Login() {
+    // let path = sessionStorage.getItem("user_path");
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.login.user);
+    const error = useSelector(state => state.login.error);
 
-  Object.values(isError).forEach(val => {
-      if (val.length > 0) {
-          isValid = false
-      } else {
-          isValid = true
-      }
-  });
-
-  Object.values(rest).forEach(val => {
-      if (val === null) {
-          isValid = false
-      } else {
-          isValid = true
-      }
-  });
-
-  return isValid;
-};
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-      center;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Wrapper = styled.div`
-  width: 25%;
-  padding: 20px;
-  background-color: white;
-  ${mobile({ width: "75%" })}
-`;
-
-const Title = styled.h1`
-  font-size: 24px;
-  font-weight: 300;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Input = styled.input`
-  flex: 1;
-  min-width: 40%;
-  margin: 10px 0;
-  padding: 10px;
-`;
-
-const Button = styled.button`
-  width: 40%;
-  border: none;
-  padding: 15px 20px;
-  background-color: teal;
-  color: white;
-  cursor: pointer;
-  margin-bottom: 10px;
-`;
-
-// const Link = styled.a`
-//   margin: 5px 0px;
-//   font-size: 12px;
-//   text-decoration: underline;
-//   cursor: pointer;
-// `;
-
-export default class Login extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      
-        email: '',
-        password: '',
-        isError: {
-           
-            error: false,
-            password: ''
-        },
-    }
-}
-
-
-onSubmit = e => {
-    e.preventDefault();
-    let email=this.state.email
-    let password=this.state.password
-    axios.get('http://localhost/Quick_Ecommerce/quick_ecommerce/quick-ecommerce/API/login.php').then(res => {
-
-                    console.log(res.data);
-                    // if(res.data){
-                        console.log(res.data);
-                        sessionStorage.setItem("user_id", res.data);
-                        let id= sessionStorage.getItem("user_id");
-                        console.log("heh"+id);
-
-
-if(id > 0){
-        window.location.href = "/";
-
-
-    }else{
-        this.setState({isError:{error:true}});
+    if (user !== '') {
+      console.log(user,'RAGHAD');
+        sessionStorage.setItem("user_info", user);
+        // if (path){
+            window.location.href = "/"
+        // }else{
+            // window.location.href = "/";
+        // }
         
+    }else{
+      console.log('error')
     }
-
-                  
-                  })
-};
-formValChange = e => {
-    e.preventDefault();
-    const { name, value } = e.target;
-    let isError = { ...this.state.isError };
-
-
-    this.setState({
-        isError,
-        [name]: value
-    })
-};
-
-render() {
-    const { isError } = this.state;
-
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     return (
-      <Container>
-        <Wrapper>
-          <Title>SIGN IN</Title>
-          <Form className="d" onSubmit={this.onSubmit} noValidate>
-            <Input  type="email"
-                        className={isError.error ? "is-invalid form-control regForm" : "form-control regForm"}
-                        name="email"
-                        onChange={this.formValChange} placeholder="Email"/>
-            {isError.error  && (
-                        <span className="invalid-feedback">email or password is wrong</span>
-                    )}
-            <Input type="password"
-                        className= "form-control regForm"
-                        name="password"
-                        onChange={this.formValChange} placeholder="password" />
-   
-            <Button type="submit" className="btn " id="regBtn">LOGIN</Button>
-            <Link to="/Register">Don't have an account?</Link>
+        <>
+            {/* Page Header Start */}
+            <div
+                className="container-fluid page-header py-3  wow fadeIn"
+                data-wow-delay="0.1s"
+            >
+                <div className="container py-5">
+                    <h1 className="display-1 text-white animated slideInDown">Login</h1>
+                    <nav aria-label="breadcrumb animated slideInDown">
+                        <ol className="breadcrumb text-uppercase mb-0">
+                            <li className="breadcrumb-item">
+                                <a className="text-white" href="/">
+                                    Home
+                                </a>
+                            </li>
+                            <li
+                                className="breadcrumb-item text-primary active"
+                                aria-current="page"
+                            >
+                                Login
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            {/* Page Header End */}
+            {/* /////////////////////////////////////////// */}
+            <section className="vh-75" style={{ backgroundColor: "#eee" }}>
+                <div className="container h-100 "><br />
+                    <div className="row d-flex justify-content-center align-items-center h-50 "><br />
+                        <div className="col-lg-12 col-xl-11">
+                            <div className="card text-black" style={{ borderRadius: 25 }}>
+                                <div className="card-body ">
+                                    <div className="row justify-content-center">
+                                        <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                            <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                                                Login
+                                            </p>
+                                            <form className="mx-1 mx-md-4" onSubmit={(e) => e.preventDefault()}>
 
-          </Form>
-        </Wrapper>
-      </Container>
+                                                <div className="d-flex flex-row align-items-center mb-4">
+                                                    <i className="fas fa-envelope fa-lg me-3 fa-fw text-dark" />
+                                                    <div className="form-outline flex-fill mb-0">
+                                                        <label className="form-label text-dark" htmlFor="form3Example3c">
+                                                            Your Email
+                                                        </label>
+                                                        <input
+                                                            type="email"
+                                                            id="form3Example3c"
+                                                            className="form-control text-dark"
+                                                            onChange={(e) => setEmail(e.target.value)}
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="d-flex flex-row align-items-center mb-4">
+                                                    <i className="fas fa-lock fa-lg me-3 fa-fw text-dark" />
+                                                    <div className="form-outline flex-fill mb-0">
+                                                        <label className="form-label text-dark" htmlFor="form3Example4c">
+                                                            Password
+                                                        </label>
+                                                        <input
+                                                            type="password"
+                                                            id="form3Example4c"
+                                                            className="form-control text-dark"
+                                                            onChange={(e) => setPassword(e.target.value)}
+                                                            required
+                                                        /><span className='err'>{error}</span>
+                                                    </div>
+                                                </div>
+                                                <div className="form-check d-flex justify-content-center ">
 
+                                                    <p className="form-check-label text-dark" htmlFor="form2Example3">
+                                                        Don't have an account ?{" "}
+                                                        <a href="/register"><strong>Register</strong></a>
+                                                    </p>
+                                                </div>
+                                                <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                                    <button type="submit" defaultValue="Sign up" className="btn btn-primary btn-lg" onClick={() => dispatch(login(email, password))}>
+                                                        Login
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div className="col-md-7 col-lg-4 col-xl-5 d-flex align-items-center order-1 order-lg-2">
+                                            <img
+                                                src="https://media.istockphoto.com/photos/gavel-on-auction-word-picture-id917901978?k=20&m=917901978&s=612x612&w=0&h=NULGu8-bVpy28gbW6AZbZlEVra-Q4s2rg607emPfkCs="
+                                                className="img-fluid"
+                                                alt="Sample image"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+            </section>
 
-
-
-
-
+        </>
     );
-  }
 }
+export default Login;
