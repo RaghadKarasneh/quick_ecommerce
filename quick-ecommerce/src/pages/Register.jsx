@@ -160,19 +160,19 @@ export default class UserForm extends Component {
         <Wrapper>
           <Title>SIGN UP</Title>
           <Form className="d" onSubmit={this.onSubmit} noValidate>
-            <Input className={isError.name.length > 0 ? "is-invalid form-control regForm" : "form-control regForm"}
+            <Input type="text" className={isError.name.length > 0 ? "is-invalid form-control regForm" : "form-control regForm"}
               name="name"
               onChange={this.formValChange} placeholder="username" />
             {isError.name.length > 0 && (
               <span className="invalid-feedback">{isError.name}</span>
             )}
-            <Input className={isError.email.length > 0 ? "is-invalid form-control regForm" : "form-control regForm"}
+            <Input type="email" className={isError.email.length > 0 ? "is-invalid form-control regForm" : "form-control regForm"}
               name="email"
               onChange={this.formValChange} placeholder="email" />
             {isError.email.length > 0 && (
               <span className="invalid-feedback">{isError.email}</span>
             )}
-            <Input className={isError.password.length > 0 ? "is-invalid form-control regForm" : "form-control regForm"}
+            <Input type="password" className={isError.password.length > 0 ? "is-invalid form-control regForm" : "form-control regForm"}
               name="password"
               onChange={this.formValChange} placeholder="password" />
             {isError.password.length > 0 && (
