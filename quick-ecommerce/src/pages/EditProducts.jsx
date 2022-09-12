@@ -58,33 +58,30 @@ function EditProducts() {
                     <div class="alert alert-success" role="alert" style={{ display: isSubmit ? "none" : "block" }}>
                         Edit successfully!
                     </div>
-                    {/* <div className='text-center message' style={{ display:isSubmit?"none":"block"}}>
-                    <p>Edit successfully</p>
-            </div> */}
 
-                    <div className="containerr">
+                    <div className="container" style={{width: '30%',  backgroundColor: '#ecefef', padding: '40px', marginBottom:'50px'}}>
                         <div className="title">
-                            <h4> Edit Users Information </h4>
+                            <h4> Edit Product Information </h4>
                         </div>
                         <div className="d-flex">
                             <form action="" method="" className='formm' onSubmit={handleSubmit} enctype="multipart/form-data">
                                 <span className="name">Product Name <span className="required" >*</span></span>
-                                <input type="text" name="product_name" required onChange={productNameHandel} defaultValue={product_name} />
+                                <input type="text" name="product_name" required onChange={productNameHandel} defaultValue={product_name} style={{display:'block', marginBottom:'20px'}}/>
 
 
                                 <span className="des">Product Image <span className="required" >*</span></span>
-                                <input type="file" name="image" required onChange={productImageHandel} defaultValue={image} />
+                                <input type="file" name="image" required onChange={productImageHandel} defaultValue={image} style={{display:'block', marginBottom:'20px'}}/>
 
                                 <span>Product Price <span className="required">*</span></span>
-                                <input type="number" id="img" name="price" className='img' required onChange={productPriceHandel} defaultValue={price} />
+                                <input type="number" id="img" name="price" className='img' required onChange={productPriceHandel} defaultValue={price} style={{display:'block', marginBottom:'20px'}}/>
 
                                 <span>	Product Description <span className="required">*</span></span>
-                                <input type="text" name="description" required onChange={productDescriptionHandel} defaultValue={description} />
+                                <textarea type="text" name="description" required onChange={productDescriptionHandel} defaultValue={description} style={{display:'block', marginBottom:'20px'}}/>
 
 
 
 
-                                <button type="submit">Confirm edit </button>
+                                <button type="submit" style={{backgroundColor: 'teal', color:'#fff', padding:'10px'}}>Confirm edit </button>
                             </form>
                         </div>
                     </div>

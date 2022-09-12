@@ -1,6 +1,8 @@
 import {
   Facebook,
+  GitHub,
   Instagram,
+  LinkedIn,
   MailOutline,
   Phone,
   Pinterest,
@@ -9,6 +11,7 @@ import {
 } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import Link from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -87,54 +90,11 @@ const Payment = styled.img`
 const Footer = () => {
   return (
     <Container>
-      <Left>
-        <Logo>QUICK E-COMMERCE</Logo>
-        <Desc>
-         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo, odio eius quaerat omnis voluptatum architecto aperiam aspernatur vitae vel, suscipit, deleniti itaque repellendus. Natus at quas blanditiis est voluptas animi?
-        </Desc>
-        <SocialContainer>
-          <SocialIcon color="3B5999">
-            <Facebook />
-          </SocialIcon>
-          <SocialIcon color="E4405F">
-            <Instagram />
-          </SocialIcon>
-          <SocialIcon color="55ACEE">
-            <Twitter />
-          </SocialIcon>
-          <SocialIcon color="E60023">
-            <Pinterest />
-          </SocialIcon>
-        </SocialContainer>
-      </Left>
+     
       <Center>
-        <Title>Useful Links</Title>
-        <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>Man Fashion</ListItem>
-          <ListItem>Woman Fashion</ListItem>
-          <ListItem>Accessories</ListItem>
-          <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Terms</ListItem>
-        </List>
+          <MailOutline style={{marginRight:"10px"}} /> raghad.karasneh@gmail.com
       </Center>
-      <Right>
-        <Title>Contact</Title>
-        <ContactItem>
-          <Room style={{marginRight:"10px"}}/> 622 Dixie Path , South Tobinchester 98336
-        </ContactItem>
-        <ContactItem>
-          <Phone style={{marginRight:"10px"}}/> +1 234 56 78
-        </ContactItem>
-        <ContactItem>
-          <MailOutline style={{marginRight:"10px"}} /> contact@lama.dev
-        </ContactItem>
-        <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
-      </Right>
+ 
     </Container>
   );
 };

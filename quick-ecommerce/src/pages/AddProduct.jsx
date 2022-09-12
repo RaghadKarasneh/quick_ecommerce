@@ -21,14 +21,14 @@ function AddProduct() {
     const productImageHandel = (e) => { setProductImage(e.target.value) }
     const productPriceHandel = (e) => { setProductPrice(e.target.value) }
     const productDescHandel = (e) => { setProductDescription(e.target.value) }
-    
-    const clickHandel = () => {
-sessionStorage.getItem("user_info");
-    console.log(sessionStorage.getItem("user_info"))
-        /************************ */
-        
 
-        axios.post('http://localhost/Quick_Ecommerce/quick_ecommerce/quick-ecommerce/API/addProduct.php?product_name='+product_name+'&image='+image+'&price='+price+'&description='+description+'&is_deleted='+0+'&user_id='+sessionStorage.getItem("user_info"))
+    const clickHandel = () => {
+        sessionStorage.getItem("user_info");
+        console.log(sessionStorage.getItem("user_info"))
+        /************************ */
+
+
+        axios.post('http://localhost/Quick_Ecommerce/quick_ecommerce/quick-ecommerce/API/addProduct.php?product_name=' + product_name + '&image=' + image + '&price=' + price + '&description=' + description + '&is_deleted=' + 0 + '&user_id=' + sessionStorage.getItem("user_info"))
             .then((data) => {
                 console.log("success!");
                 setSubmit(!isSubmit)
@@ -58,61 +58,50 @@ sessionStorage.getItem("user_info");
                 </div>
             </div>
 
-            {/* <div className='t1'>
-                <span style={{ padding: '10px' }}><FontAwesomeIcon icon={faIdBadge}></FontAwesomeIcon></span>
-                Candidate Profile
-                <hr />
-            </div> */}
-<form>
-            <div className="c2">
-                <div className="cHead">
-                    <h2 className='label small-section-tittle'>Enter Your Product Details:</h2>
-                </div>
 
-                <div className="cBody">
-                    <div className="small-section-tittle">
-                        <h4>Overview</h4>
+            <form>
+                <div className="c2">
+                    <div className="cHead">
+                        <h2 className='label small-section-tittle'>Enter Your Product Details:</h2>
                     </div>
-                    <span className='d1'>
-                        <label htmlFor="" className='label2'>Product Name<span className='red'>*</span></label>
-                        <input type="text" className='inp' name='product_name' onChange={productNameHandel} />
-                    </span>
-                    <span className='d1'>
-                        <label htmlFor="" className='label2'>Product Image<span className='red'>*</span></label>
-                        <input type="file" className='inp' name='image' onChange={productImageHandel} />
-                    </span>
+
+                    <div className="cBody">
+                        <div className="small-section-tittle">
+                            <h4>Overview</h4>
+                        </div>
+                        <span className='d1'>
+                            <label htmlFor="" className='label2'>Product Name<span className='red'>*</span></label>
+                            <input type="text" className='inp' name='product_name' onChange={productNameHandel} />
+                        </span>
+                        <span className='d1'>
+                            <label htmlFor="" className='label2'>Product Image<span className='red'>*</span></label>
+                            <input type="file" className='inp' name='image' onChange={productImageHandel} />
+                        </span>
+
+                        <div>
+                            <div style={{}}>
+                                <span className='d1'>
+                                    <label htmlFor="" className='label2'>Product Price<span className='red'>*</span></label>
+                                    <input type="text" className='inp' name="price" onChange={productPriceHandel} />
+                                </span>
+                                <span className='d1'>
+                                    <label htmlFor="" className='label2'>Product Description<span className='red'>*</span></label>
+                                    <input type="text" className='inp' name="description" onChange={productDescHandel} />
+                                </span>
 
 
-                    {/* <label htmlFor="">Address (1)</label> */}
-                    <div>
-                        <div style={{}}>
-                            <span className='d1'>
-                                <label htmlFor="" className='label2'>Product Price<span className='red'>*</span></label>
-                                <input type="text" className='inp' name="price" onChange={productPriceHandel} />
-                            </span>
-                            <span className='d1'>
-                                <label htmlFor="" className='label2'>Product Description<span className='red'>*</span></label>
-                                <input type="text" className='inp' name="description" onChange={productDescHandel} />
-                            </span>
-
+                            </div>
 
                         </div>
-
-
-
-
-
                     </div>
                 </div>
-            </div>
 
 
-            <div style={{ width: "60%", margin: "auto", margin: "70px auto" }}>
-                <a href="#" className='butt' onClick={clickHandel}>Post Job</a>
-                {/* <label htmlFor="file2" className='file'>Chose a file</label> */}
-            </div> </form>
+                <div style={{ width: "60%", margin: "auto", margin: "70px auto" }}>
+                    <a href="#" className='butt' onClick={clickHandel}>Post Job</a>
+                </div> </form>
         </div>
-       
+
     );
 }
 

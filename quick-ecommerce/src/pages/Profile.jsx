@@ -98,7 +98,7 @@ const Profile = () => {
                                 <td>{item.description}</td>
                                 <td>{item.price}</td>
                                 <td>
-                                    <button className="btn ml-5" style={{ backgroundColor: 'transparent', }} onClick={(e) => {
+                                    <button className="btn ml-5" style={{ backgroundColor: 'transparent' }} onClick={(e) => {
                                         e.preventDefault();
                                         sessionStorage.setItem('Id', item.id);
                                         sessionStorage.setItem('product_name', item.product_name);
